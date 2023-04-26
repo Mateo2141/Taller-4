@@ -24,7 +24,7 @@ public class PSuperiorParametros extends JPanel{
 	private JRadioButton medio;
 	private JRadioButton dificil;
 	private Control matriz;
-
+	private PTablero botonesTablero;
 	
 	public PSuperiorParametros() {
        this.tamaño = new JLabel("Tamaño:");
@@ -34,6 +34,7 @@ public class PSuperiorParametros extends JPanel{
        this.medio = new JRadioButton("Medio");
        this.dificil = new JRadioButton("Difícil");
        this.matriz = new Control();
+       this.botonesTablero = new PTablero(5);
        
        ButtonGroup grupoDificultad = new ButtonGroup();
        grupoDificultad.add(facil);
@@ -63,6 +64,13 @@ public class PSuperiorParametros extends JPanel{
 				estado = 12;
 			}
 			matriz.nivel(estado);
+			boolean[][] tablero = matriz.darTablero();
+			botonesTablero.cambiarColores(tablero);
+			FPrincipal ventanaPrincipal = (FPrincipal) SwingUtilities.getWindowAncestor(PSuperiorParametros.this);
+	        ventanaPrincipal.actualizarPTablero(botonesTablero);
+			matriz.salvarTablero();
+			
+			
 		}
 	};
 	
@@ -79,14 +87,11 @@ public class PSuperiorParametros extends JPanel{
 			String opcion = (String) comboBox.getSelectedItem();
 			opcion = opcion.substring(0, 1);
 			int intTamaño = Integer.parseInt(opcion);
-			//NO SE ESTA ACTUALIZANDO :(
-
-			PTablero botonesTablero = new PTablero(intTamaño);
 			botonesTablero.setTamanio(intTamaño);
 			matriz.darTamaño(intTamaño);
-			
 			FPrincipal ventanaPrincipal = (FPrincipal) SwingUtilities.getWindowAncestor(PSuperiorParametros.this);
 	        ventanaPrincipal.actualizarPTablero(botonesTablero);
+	        matriz.salvarTablero();
 		}	
 	});
        

@@ -33,15 +33,11 @@ public class ventanaTop10 extends JFrame{
         panelInferior.setBackground(new Color(228, 244, 253));
         JTextArea texto = new JTextArea();
         StringBuilder sb = new StringBuilder();
-        //ACA PONGO UNA COLECCION AHORITA PARA RECORRELA, LO UNICO ES QUE TENGO QUE PASAR
-        //DE OBJETO A STRNG 
+        //ACA PONGO UNA COLECCION AHORITA PARA RECORRELA
         
-        for (String elemento : coleccion) {
-            sb.append(elemento).append("\n");
-        }
+        
         texto.setText(sb.toString());
-        panelInferior.add(texto, BorderLayout.CENTER);
-        
+        panelInferior.add(texto, BorderLayout.CENTER);        
 
         getContentPane().setLayout(new BorderLayout());
         getContentPane().add(panelSuperior, BorderLayout.NORTH);

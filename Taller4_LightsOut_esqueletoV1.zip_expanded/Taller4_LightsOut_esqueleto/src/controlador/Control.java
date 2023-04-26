@@ -7,21 +7,22 @@ import uniandes.dpoo.taller4.modelo.Top10;
 
 public class Control {
 	private Tablero modelo;
-	private Tablero matriz;
 	private RegistroTop10 formaRegistros;
 	private Top10 registros;
 	private Top10 textoRegistros;
+	
 
 	public Control() {
-		this.modelo = new Tablero(1);
+		this.modelo = new Tablero(5);
 		this.registros = new Top10();
 	}
 	/*
 	 * manipula el modelo 
-	 */
-	//SI ES CORRECTO??? INICIALIZAR Y LUUEGO CAMBIAR?		
+	 */	
 	public void darTamaño (int tamaño) {
-		this.matriz = new Tablero(tamaño);
+		this.modelo = new Tablero(tamaño);
+		salvarTablero();
+		
 	}
 	
 	public void nivel (int dificultad) {
@@ -56,6 +57,16 @@ public class Control {
 		int resultado = modelo.calcularPuntaje();
 		return resultado;
 	}
+	
+	public boolean[][] darTablero() {
+		boolean[][] resultado = modelo.darTablero();
+		return resultado;
+	}
+	
+	public void salvarTablero() {
+		modelo.salvar_tablero();
+	}
+
 	
 	
 	

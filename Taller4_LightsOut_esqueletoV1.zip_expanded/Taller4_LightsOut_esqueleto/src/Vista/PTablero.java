@@ -59,7 +59,16 @@ public class PTablero extends JPanel{
         this.repaint();
     }
     
-    public void cambiarColor(int fila, int columna, Color color) {
-        matrizBotones[fila][columna].setBackground(color);
+    public void cambiarColores(boolean[][] matriz) {
+        for (int i = 0; i < tamanio; i++) {
+            for (int j = 0; j < tamanio; j++) {
+                if (matriz[i][j]) {
+                    matrizBotones[i][j].setBackground(Color.YELLOW);
+                } else {
+                    matrizBotones[i][j].setBackground(Color.BLACK);
+                }
+            }
+        }
     }
+
 }
